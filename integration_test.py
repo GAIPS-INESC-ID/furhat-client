@@ -1,8 +1,14 @@
 import sys
-print(sys.executable)
+import clr
 
-print(sys.version)
+# This variable points to where the FAtiMA Libraries are located in your
+# machine
+fatima_lib_path = r"C:\GIT\furhat-client-fatima\fatima"
+sys.path.append(fatima_lib_path)
+clr.AddReference("IntegratedAuthoringTool")
 
+from IntegratedAuthoringTool import IntegratedAuthoringToolAsset
 
-for num in [1, 2, 3, 4]:
-    print(num)
+iat = IntegratedAuthoringToolAsset.LoadFromFile("C:/Tests/test1.iat")
+
+print(iat.ScenarioName)
