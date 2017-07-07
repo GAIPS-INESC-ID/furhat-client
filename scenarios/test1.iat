@@ -8,10 +8,19 @@
 			"PlayerDialogues": [
 				{
 					"CurrentState": "Start",
-					"NextState": "-",
-					"Meaning": ["-"],
+					"NextState": "Accused",
+					"Meaning": ["Accusation"],
+					"Style": ["Aggressive"],
+					"Utterance": "I am sure you are the werewolf"
+				}],
+			"AgentDialogues": [
+				{
+					"CurrentState": "Accused",
+					"NextState": "End",
+					"Meaning": ["Negation"],
 					"Style": ["-"],
-					"Utterance": "Hi!"
+					"Utterance": "No, I am not!",
+					"UtteranceId": "TTS-5CD265DC24FB2D4ABFDA2155E0F14327"
 				}]
 		},
 	"types": [

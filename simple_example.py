@@ -1,6 +1,5 @@
 from furhat import connect_to_iristk
 
-
 FURHAT_IP = 'x.x.x.x' # Furhat IP address
 FURHAT_AGENT_NAME = 'furhatX' # Furhat agent name. Can be found under "Connections" in the furhat web-GUI
 

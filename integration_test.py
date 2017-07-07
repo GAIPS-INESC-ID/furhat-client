@@ -7,18 +7,19 @@ fatima_lib_path = r"C:\GIT\furhat-client-fatima\fatima"
 sys.path.append(fatima_lib_path)
 clr.AddReference("IntegratedAuthoringTool")
 
+from System import Array
 from IntegratedAuthoringTool import IntegratedAuthoringToolAsset
 from IntegratedAuthoringTool import IATConsts
 from IntegratedAuthoringTool.DTOs import CharacterSourceDTO
 from RolePlayCharacter import RolePlayCharacterAsset
+from RolePlayCharacter import EventHelper
 
 # Load the Scenario Configuration
-iat = IntegratedAuthoringToolAsset.LoadFromFile("C:/Tests/test1.iat")
+iat = IntegratedAuthoringToolAsset.LoadFromFile('C:/GIT/furhat-client-fatima/scenarios/test1.iat')
 print('- Scenario Information -')
 print('Name: ', iat.ScenarioName)
 print('Description: ', iat.ScenarioDescription)
 print('\n')
-
 
 # Load All The Character Sources
 sources = []
@@ -35,10 +36,10 @@ print('Name: ', rpc.CharacterName)
 print('Mood: ', rpc.Mood)
 print('\n')
 
-curState = IATConsts.INITIAL_DIALOGUE_STATE
-while(curState != IATConsts.TERMINAL_DIALOGUE_STATE):
-    playerDialogs = iat.GetDialogueActionsByState(IATConsts.PLAYER, curState)
-    print('- Available Dialogue Options -')
+curState = 'Start'
+while(curState != 'End'):
+    playerDialogs = iat.GetDialogueActionsByState('Player', curState)
+    print('- Available Dialogue Options For State: ', curState)
     dialogues = []
     for d in playerDialogs:
         dialogues.append(d)
@@ -46,9 +47,39 @@ while(curState != IATConsts.TERMINAL_DIALOGUE_STATE):
     i = -1
     while(i < 0 or i >= len(dialogues)):
         i = int(input('Select option: '))
-    pAct = iat.BuildSpeakActionName(IATConsts.PLAYER, dialogues[i].Id)
-    speakEvt = EventHelper.ActionEnd(IATConsts.PLAYER, pAct, rpc.CharacterName)
+    pAct = iat.BuildSpeakActionName('Player', dialogues[i].Id)
 
+    # Action Event
+    evt = EventHelper.ActionEnd('Player', str(pAct), str(rpc.CharacterName))
+    print('\n', evt, '\n')
+    rpc.Perceive(evt)
 
-# var actionName = iat.BuildSpeakActionName(playerStr, chosenDialog.Id)
-# var speakEvt = EventHelper.ActionEnd(playerStr, actionName.ToString(), rpc.CharacterName.ToString())
+    # Property Change Event
+    curState = dialogues[i].NextState
+    dState = 'DialogueState(Player)'
+    evt = EventHelper.PropertyChange(dState, curState, 'Player')
+    print('\n', evt, '\n')
+    rpc.Perceive(evt)
+
+    responses = []
+    for d in rpc.Decide():
+        par = []
+        for p in d.Parameters:
+            par.append(p)
+
+        for r in iat.GetDialogueActions('Agent', par[0], par[1], par[2], par[3]):
+            responses.append(r)
+
+    response = responses[0]
+
+    print('Character Response: ', responses[0].Utterance)
+
+    # Property Change Event
+    curState = responses[0].NextState
+    dState = 'DialogueState(Player)'
+    evt = EventHelper.PropertyChange(dState, curState, str(rpc.CharacterName))
+    print('\n', evt, '\n')
+    rpc.Perceive(evt)
+
+    print('\n')
+    print('Character Mood: ', rpc.Mood, '\n')

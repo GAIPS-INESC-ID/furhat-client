@@ -13,7 +13,7 @@
 			"BodyName": null,
 			"VoiceName": null,
 			"EmotionalAppraisalAssetSource": "emotional_profile.ea",
-			"EmotionalDecisionMakingSource": null,
+			"EmotionalDecisionMakingSource": "SingleResponse.edm",
 			"SocialImportanceAssetSource": null,
 			"CommeillFautAssetSource": null,
 			"EmotionalState":
