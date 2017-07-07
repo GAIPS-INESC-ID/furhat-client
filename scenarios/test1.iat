@@ -1,0 +1,22 @@
+{
+	"root":
+		{
+			"classId": 0,
+			"ScenarioName": "Furhat Test Scenario",
+			"Description": "This scenario is meant to test the integration between Furhat and FAtiMA",
+			"CharacterSources": ["werewolf_player.rpc", "werewolf_player2.rpc"],
+			"PlayerDialogues": [
+				{
+					"CurrentState": "Start",
+					"NextState": "-",
+					"Meaning": ["-"],
+					"Style": ["-"],
+					"Utterance": "Hi!"
+				}]
+		},
+	"types": [
+		{
+			"TypeId": 0,
+			"ClassName": "IntegratedAuthoringTool.IntegratedAuthoringToolAsset, IntegratedAuthoringTool, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+		}]
+}
