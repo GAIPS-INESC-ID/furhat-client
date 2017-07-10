@@ -12,13 +12,28 @@
 					"Meaning": ["Accusation"],
 					"Style": ["Aggressive"],
 					"Utterance": "I am sure you are the werewolf"
+				}, 
+				{
+					"CurrentState": "Start",
+					"NextState": "Accused",
+					"Meaning": ["Accusation"],
+					"Style": ["Subtle"],
+					"Utterance": "Maybe you are the werewolf"
 				}],
 			"AgentDialogues": [
 				{
 					"CurrentState": "Accused",
 					"NextState": "End",
 					"Meaning": ["Negation"],
-					"Style": ["-"],
+					"Style": ["PositiveMood"],
+					"Utterance": "I don't think you are right!",
+					"UtteranceId": "TTS-87ADB8D8E34AE720ECAB20664FAECF1A"
+				}, 
+				{
+					"CurrentState": "Accused",
+					"NextState": "End",
+					"Meaning": ["Negation"],
+					"Style": ["NegativeMood"],
 					"Utterance": "No, I am not!",
 					"UtteranceId": "TTS-5CD265DC24FB2D4ABFDA2155E0F14327"
 				}]

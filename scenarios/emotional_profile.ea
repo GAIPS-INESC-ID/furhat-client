@@ -14,7 +14,15 @@
 			"AppraisalRules":
 				{
 					"AppraisalWeight": 1,
-					"Rules": []
+					"Rules": [
+						{
+							"EventName": "Event(Action-End, *, Speak(*, *, Accusation, *), SELF)",
+							"Conditions":
+								{
+									"Set": []
+								},
+							"Desirability": -5
+						}]
 				},
 			"EmotionDispositions": [
 				{

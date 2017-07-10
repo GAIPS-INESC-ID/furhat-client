@@ -15,7 +15,8 @@ from RolePlayCharacter import RolePlayCharacterAsset
 from RolePlayCharacter import EventHelper
 
 # Load the Scenario Configuration
-iat = IntegratedAuthoringToolAsset.LoadFromFile('C:/GIT/furhat-client-fatima/scenarios/test1.iat')
+scenarioFile = 'C:/GIT/furhat-client-fatima/scenarios/test1.iat'
+iat = IntegratedAuthoringToolAsset.LoadFromFile(scenarioFile)
 print('- Scenario Information -')
 print('Name: ', iat.ScenarioName)
 print('Description: ', iat.ScenarioDescription)
@@ -63,11 +64,11 @@ while(curState != 'End'):
 
     responses = []
     for d in rpc.Decide():
-        par = []
+        pa = []
         for p in d.Parameters:
-            par.append(p)
+            pa.append(p)
 
-        for r in iat.GetDialogueActions('Agent', par[0], par[1], par[2], par[3]):
+        for r in iat.GetDialogueActions('Agent', pa[0], pa[1], pa[2], pa[3]):
             responses.append(r)
 
     response = responses[0]
