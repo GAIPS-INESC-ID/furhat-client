@@ -8,21 +8,16 @@
 					"Perspective": "Person",
 					"Knowledge":
 						{
-
+							"SELF":
+								{
+									"Suspects(Person, A)": 0.3
+								}
 						}
 				},
 			"AppraisalRules":
 				{
 					"AppraisalWeight": 1,
-					"Rules": [
-						{
-							"EventName": "Event(Action-End, *, Speak(*, *, Accusation, *), SELF)",
-							"Conditions":
-								{
-									"Set": []
-								},
-							"Desirability": -5
-						}]
+					"Rules": []
 				},
 			"EmotionDispositions": [
 				{

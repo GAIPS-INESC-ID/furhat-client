@@ -1,0 +1,100 @@
+{
+	"root":
+		{
+			"classId": 2,
+			"KnowledgeBase":
+				{
+					"Perspective": "Furhat",
+					"Knowledge":
+						{
+							"SELF":
+								{
+									"Suspects(Furhat, A)": 1
+								}
+						}
+				},
+			"BodyName": null,
+			"VoiceName": null,
+			"EmotionalAppraisalAssetSource": "emotional_profile.ea",
+			"EmotionalDecisionMakingSource": "SingleResponse.edm",
+			"SocialImportanceAssetSource": null,
+			"CommeillFautAssetSource": null,
+			"EmotionalState":
+				{
+					"Mood": 0,
+					"initialTick": 0,
+					"EmotionalPool": [],
+					"AppraisalConfiguration":
+						{
+							"HalfLifeDecayConstant": 0.5,
+							"EmotionInfluenceOnMoodFactor": 0.3,
+							"MoodInfluenceOnEmotionFactor": 0.3,
+							"MinimumMoodValueForInfluencingEmotions": 0.5,
+							"EmotionalHalfLifeDecayTime": 15,
+							"MoodHalfLifeDecayTime": 60
+						}
+				},
+			"AutobiographicMemory":
+				{
+					"Tick": 1,
+					"records": [
+						{
+							"classId": 0,
+							"Id": 1,
+							"Type": "Action-End",
+							"Subject": "PlayerA",
+							"Timestamp": 0,
+							"Action": "Accuse",
+							"Target": "Furhat"
+						}, 
+						{
+							"classId": 1,
+							"Id": 2,
+							"Type": "Property-Change",
+							"Subject": "Furhat",
+							"Timestamp": 1,
+							"Property": "Suspects(Furhat, A)",
+							"NewValue": 1
+						}]
+				},
+			"OtherAgents":
+				{
+					"dictionary": [
+						{
+							"key": "PlayerA",
+							"value":
+								{
+									"Name": "PlayerA",
+									"EmotionalState":
+										{
+											"Mood": 0,
+											"initialTick": 0,
+											"EmotionalPool": [],
+											"AppraisalConfiguration":
+												{
+													"HalfLifeDecayConstant": 0.5,
+													"EmotionInfluenceOnMoodFactor": 0.3,
+													"MoodInfluenceOnEmotionFactor": 0.3,
+													"MinimumMoodValueForInfluencingEmotions": 0.5,
+													"EmotionalHalfLifeDecayTime": 15,
+													"MoodHalfLifeDecayTime": 60
+												}
+										}
+								}
+						}]
+				}
+		},
+	"types": [
+		{
+			"TypeId": 0,
+			"ClassName": "AutobiographicMemory.AM+ActionEvent, AutobiographicMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+		}, 
+		{
+			"TypeId": 1,
+			"ClassName": "AutobiographicMemory.AM+PropertyChangeEvent, AutobiographicMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+		}, 
+		{
+			"TypeId": 2,
+			"ClassName": "RolePlayCharacter.RolePlayCharacterAsset, RolePlayCharacter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+		}]
+}
